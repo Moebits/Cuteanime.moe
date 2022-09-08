@@ -81,3 +81,6 @@ Start the web server with `npm start`.
 
 All the web server does is load the `index.html` file, there is no real backend so this can be hosted as a static 
 website. 
+
+### Manga Site
+- [Cutemanga.moe](https://github.com/Tenpi/Cutemanga.moe)
