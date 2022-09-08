@@ -1,0 +1,142 @@
+@import "../../index.less";
+
+.sortbar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    justify-content: space-between;
+}
+
+.sortbar-button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.sortbar-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--sortbarButton);
+    border: none;
+    border-radius: 3px;
+    padding: 2px 3px;
+    margin-right: 10px;
+    height: 25px;
+}
+
+.sortbar-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+.sortbar-button-img {
+    height: 19px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.sortbar-button-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 19px;
+    color: black;
+}
+
+.sortbar-search-container {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+.sortbar-search {
+    height: 30px;
+    width: 200px;
+    background-color: var(--sortbarSearchBG);
+    border: none;
+    font-family: Mangaka, sans-serif;
+    font-size: 19px;
+    color: black;
+    padding: 5px;
+}
+
+.sortbar-search::placeholder {
+    font-family: Mangaka, sans-serif;
+    font-size: 19px;
+    color: black;
+}
+
+.sortbar-search-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--sortbarButton);
+    border: none;
+    padding: 2px 3px;
+    height: 30px;
+}
+
+.sortbar-search-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+.sortbar-search-button-img {
+    height: 22px;
+    width: auto;
+    cursor: pointer;
+}
+
+.sortbar-episode-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.sortbar-anime-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 35px;
+    color: var(--text-alt);
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
+}
+
+.sortbar-episode-num {
+    font-family: Mangaka, sans-serif;
+    font-size: 35px;
+    color: var(--text-dark);
+    margin-left: 10px;
+}
+
+.sortbar-episode-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 30px;
+    color: var(--text-dark);
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    .sortbar-search {
+        width: 100px;
+    }
+}

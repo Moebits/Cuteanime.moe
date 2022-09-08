@@ -1,0 +1,100 @@
+@import "../../index.less";
+
+.anime-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+}
+
+.anime-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 10px 20px;
+}
+
+.anime-info-img-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.anime-info-img {
+    height: 350px;
+    width: auto;
+}
+
+.anime-info-text-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.anime-info-text-row {
+    display: block;
+    word-wrap: break-word;
+}
+
+.anime-info-text-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 40px;
+    color: var(--text);
+}
+
+.anime-info-text-category {
+    font-family: Mangaka, sans-serif;
+    font-size: 20px;
+    color: var(--text);
+    margin-right: 10px;
+}
+
+.anime-info-text-content {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text);
+}
+
+.anime-info-text-content-link {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--text-alt);
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .anime-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-info-img {
+        height: 250px;
+        width: auto;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    .anime-info-text-title {
+        font-size: 32px;
+    }
+    
+
+    .anime-info-text-category {
+        font-size: 16px;
+    }
+    
+    .anime-info-text-content {
+        font-size: 15px;
+    }
+    
+    .anime-info-text-content-link {
+        font-size: 15px;
+    }
+}

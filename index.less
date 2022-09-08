@@ -1,0 +1,185 @@
+@font-face {
+    font-family: "Mangaka";
+    src: url("/assets/fonts/Mangaka.otf") format("opentype");
+}
+
+@titlebar-height: 70px;
+@pdf-controls-height: 40px;
+@sidebar-width: 400px;
+
+:root {
+    --selection: rgba(177, 168, 255, 0.302);
+    --text: #3a2bf6;
+    --text-alt: #2b2ef6;
+    --text-dark: #241feb;
+    --subtitles: #6b63ff;
+    --activeSubtitles: #ff2fee;
+    --background: #0d0039;
+    --titlebarBG: #150066;
+    --titlebarText: #3a2bfc;
+    --titlebarText2: #2920d9;
+    --titlebarTextAlt: #261ca4;
+    --sidebarBG: #0d0025;
+    --sidebarText: #3b24e2;
+    --sidebarButton: #210fa8;
+    --sidebarLink: #3330ff;
+    --sortbarButton: #2100e0;
+    --sortbarSearchBG: #180098;
+    --gridButton: #2e30ff;
+    --footerBG: #100033;
+    --dropdownBG: rgba(8, 0, 51, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.stop-transitions * { 
+    transition: none !important; 
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+    z-index: -1000;
+    -webkit-touch-callout: none;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .body {
+        flex-direction: column;
+    }
+}
+
+::selection {
+    background-color: var(--selection);
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: var(--background);
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--titlebarBG);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--navbarBG);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+  }
+
+
+.stroke-black() {
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+}
+
+.stroke-black-thin() {
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+
+.stroke-black-thick() {
+    text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black,0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black,0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black,0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black, 0 0 3px black;
+}
+
+.stroke-white() {
+    text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white,0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white,0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white,0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+div:focus, input:focus, button:focus, textarea:focus {
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+a {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+.react-transform-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.react-transform-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.rotate {
+    animation: rotate 3.5s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    html, body {
+        overflow-x: hidden;
+    }
+}

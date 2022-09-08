@@ -1,0 +1,59 @@
+@import "../../index.less";
+
+.video-options {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: transparent;
+}
+
+.video-options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    &:last-child {
+        justify-content: flex-end;
+    }
+}
+
+.video-options-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--gridButton);
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 7px 7px;
+    height: 38px;
+    margin-right: 10px;
+    &:last-child {
+        margin-right: 0px;
+    }
+    &:hover {
+        border: 2px solid white;
+    }
+}
+
+.video-options-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: invert(1);
+    }
+}
+
+.video-options-button-img {
+    height: 26px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.video-options-button-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 27px;
+    color: black;
+}

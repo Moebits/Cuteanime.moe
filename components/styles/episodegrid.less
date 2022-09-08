@@ -1,0 +1,40 @@
+@import "../../index.less";
+
+.episode-grid {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+}
+
+.episode-grid-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+    margin: 0px 20px;
+}
+
+.episode-grid-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: var(--gridButton);
+}
+
+.episode-grid-volumes {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+@media screen and (max-width: 500px) {
+    .episode-grid-container {
+        margin: 0px;
+        margin-left: 50px;
+    }
+}

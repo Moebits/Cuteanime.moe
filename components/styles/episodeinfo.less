@@ -1,0 +1,67 @@
+@import "../../index.less";
+
+.episode-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--text);
+    padding: 10px;
+}
+
+.episode-info-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: 5px;
+    &:last-child {
+        margin-bottom: 10px;
+    }
+}
+
+.episode-info-icon {
+    height: 28px;
+    width: auto;
+}
+
+.episode-info-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 28px;
+    color: var(--text);
+    margin-left: 10px;
+}
+
+.episode-info-img {
+    height: 125px;
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.episode-info-category {
+    font-family: Mangaka, sans-serif;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.episode-info-content {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--text);
+    margin-left: 5px;
+}
+
+.episode-info-text-content-link {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--text-alt);
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}

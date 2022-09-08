@@ -1,0 +1,125 @@
+@import "../../index.less";
+
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    padding: 20px 30px;
+}
+
+.terms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+}
+
+.privacy {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+}
+
+.terms-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.terms-img {
+    width: auto;
+    height: 60px;
+}
+
+.terms-title {
+    font-family: Tahoma, sans-serif;
+    font-size: 50px;
+    color: var(--text);
+    margin-left: 10px;
+}
+
+.terms-text {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.terms-text-alt {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text-alt);
+    margin-bottom: 20px;
+}
+
+.terms-weblink {
+    .terms-text-alt();
+    cursor: pointer;
+    &:hover {
+        filter: brightness(130%);
+    }
+}
+
+.privacy-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.privacy-img {
+    width: auto;
+    height: 60px;
+}
+
+.privacy-title {
+    font-family: Tahoma, sans-serif;
+    font-size: 50px;
+    color: var(--text);
+    margin-left: 10px;
+    filter: hue-rotate(336deg) saturate(0.8);
+}
+
+.privacy-text {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.privacy-text-alt {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text-alt);
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .terms-img {
+        width: auto;
+        height: 45px;
+    }
+    
+    .terms-title {
+        font-size: 40px;
+    }
+
+    .terms-text {
+        font-size: 15px;
+    }
+    
+    .terms-text-alt {
+        font-size: 15px;
+    }
+    
+    .privacy-text {
+        font-size: 15px;
+    }
+    
+    .privacy-text-alt {
+        font-size: 15px;
+    }
+}

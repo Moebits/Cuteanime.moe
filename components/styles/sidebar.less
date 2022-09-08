@@ -1,0 +1,151 @@
+@import "../../index.less";
+
+.sidebar {
+    position: sticky;
+    top: 0px; //@titlebar-height;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    width: @sidebar-width;
+    background-color: var(--sidebarBG);
+    transition: margin-left 0.5s, background-color 0s;
+}
+
+.hide-sidebar {
+    margin-left: -@sidebar-width;
+}
+
+.sidebar-container {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 0px;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+}
+
+.sidebar-text {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--sidebarText);
+    font-weight: bold;
+    font-style: italic;
+}
+
+.sidebar-button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.sidebar-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--sidebarButton);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.sidebar-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+.sidebar-button-img {
+    height: 25px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.sidebar-button-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 27px;
+    color: black;
+}
+
+.sidebar-link-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.sidebar-link {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    margin-top: 5px;
+    color: var(--sidebarLink);
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.sidebar-search-container {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.sidebar-search {
+    height: 35px;
+    width: 230px;
+    background-color: var(--sortbarSearchBG);
+    border: none;
+    font-family: Mangaka, sans-serif;
+    font-size: 24px;
+    color: black;
+    padding: 5px;
+}
+
+.sidebar-search::placeholder {
+    font-family: Mangaka, sans-serif;
+    font-size: 24px;
+    color: black;
+}
+
+.sidebar-search-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--sortbarButton);
+    border: none;
+    padding: 2px 3px;
+    height: 35px;
+}
+
+.sidebar-search-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(0) invert(1) !important;
+    }
+}
+
+.sidebar-search-button-img {
+    height: 27px;
+    width: auto;
+    cursor: pointer;
+}

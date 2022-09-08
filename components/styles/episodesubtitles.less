@@ -1,0 +1,80 @@
+@import "../../index.less";
+
+.episode-subtitles {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 10px;
+    border: 1px solid var(--text);
+}
+
+.episode-subtitles-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--text);
+    padding: 10px;
+}
+
+.episode-subtitles-title-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.episode-subtitles-checkbox {
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(130%)
+    }
+}
+
+.episode-subtitles-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 25px;
+    color: var(--text);
+}
+
+.episode-subtitles-subtitle-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 550px;
+    overflow-y: scroll;
+    overflow-y: overlay;
+}
+
+.episode-subtitles-cue {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--text);
+    padding: 10px;
+}
+
+
+.episode-subtitles-cue-row {
+    display: inline-block;
+}
+
+.episode-subtitles-cue-marker {
+    height: 15px;
+    width: auto;
+    margin-right: 5px;
+    &:hover {
+        cursor: pointer;
+        filter: brightness(130%);
+    }
+}
+
+.episode-subtitles-cue-text {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--text);
+}

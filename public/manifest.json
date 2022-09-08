@@ -1,0 +1,16 @@
+{
+    "short_name": "cuteanime.moe",
+    "name": "Cuteanime.moe",
+    "description": "Cuteanime is a website where you can watch anime with Japanese subtitles, it is a fun way to study japanese.",
+    "icons": [
+      {
+        "src": "assets/icons/favicon.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#000000"
+  }

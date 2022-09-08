@@ -1,0 +1,60 @@
+@import "../../index.less";
+
+.about {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    padding: 20px 200px;
+}
+
+.about-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.about-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 35px;
+    color: var(--text);
+}
+
+.about-text {
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    color: var(--text);
+}
+
+.about-link {
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    color: var(--text-alt);
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
+}
+
+.about-img {
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    .about {
+        padding: 20px 20px;
+    }
+
+    .about-title {
+        font-size: 30px;
+    }
+    
+    .about-text {
+        font-size: 16px;
+    }
+}

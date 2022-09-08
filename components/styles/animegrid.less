@@ -1,0 +1,71 @@
+@import "../../index.less";
+
+.anime-grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: calc(100vh - @titlebar-height - 141px);
+    background-color: transparent;
+}
+
+.anime-grid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.anime-grid-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 20px;
+}
+
+.anime-grid-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.anime-grid-page-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gridButton);
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 3px 3px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    &:hover {
+        border: 2px solid white;
+    }
+}
+
+.anime-grid-page-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: invert(1);
+    }
+}
+
+.anime-grid-page-button-img {
+    height: 32px;
+    width: auto;
+}
+
+.anime-grid-page-button-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 32px;
+    color: black;
+}

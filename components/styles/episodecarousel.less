@@ -1,0 +1,54 @@
+@import "../../index.less";
+
+.episode-carousel {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    //max-width: calc(100vw - 120px);
+    //min-width: 1050px;
+    width: 100%;
+    align-items: center;
+    //margin-top: 20px;
+    overflow: hidden;
+}
+
+.episode-carousel-slider {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: margin-left 0.05s;
+}
+
+.episode-carousel-left {
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 50px;
+    &:hover {
+        filter: brightness(130%);
+    }
+    transition: opacity 0.3s;
+}
+
+.episode-carousel-right {
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    right: 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 50px;
+    &:hover {
+        filter: brightness(130%);
+    }
+    transition: opacity 0.3s;
+}
+
+.arrow-visible {
+    opacity: 1;
+}

@@ -1,0 +1,112 @@
+@import "../../index.less";
+
+.grid-anime {
+    position: relative;
+    display: flex;
+    background-color: transparent;
+    margin-right: 50px;
+    &:last-child {
+        margin-right: 0px;
+    }
+}
+
+.grid-anime-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.grid-anime-img {
+    height: 300px;
+    width: auto;
+    &:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+    }
+}
+
+.grid-anime-button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.grid-anime-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--gridButton);
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 7px 7px;
+    height: 32px;
+    &:hover {
+        border: 2px solid white;
+    }
+}
+
+.grid-anime-button-hover {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        filter: invert(1);
+    }
+}
+
+.grid-anime-button-img {
+    height: 22px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.grid-anime-button-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 22px;
+    color: black;
+}
+
+.grid-anime-img-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid var(--titlebarBG);
+}
+
+.grid-anime-text-container {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    background-color: var(--sortbarSearchBG);
+    justify-content: center;
+    transform-origin: bottom;
+    width: 100%;
+    transition: all 0.3s;
+    padding-top: 5px;
+}
+
+.grid-anime-text {
+    font-family: Mangaka, sans-serif;
+    font-size: 20px;
+    color: var(--gridButton);
+}
+
+.hide-grid-anime-text {
+    transform-origin: bottom;
+    transform: scaleY(0);
+}
+
+@media screen and (max-width: 500px) {
+    .grid-anime {
+        margin-right: 10px;
+    }
+
+    .grid-anime-img {
+        height: 165px;
+    }
+}
