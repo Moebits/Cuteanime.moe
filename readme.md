@@ -5,20 +5,20 @@ the Japanese subtitles from [Kitsunekko](https://kitsunekko.net).
 
 We use a custom video player which is explained in more detail below.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/about.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/about.png?raw=true)
 
 ### Switching Subtitles
 
 You can quickly toggle between Japanese/English subtitles with the "Sub" button in the video player.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/switchingsubtitles.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/switchingsubtitles.png?raw=true)
 
 ### Subtitle Catalog
 
 The subtitle catalog shows the entire script of the episode allowing you to quickly navigate to a specific dialog, or 
 search through all of the dialogues.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/subtitlecatalog.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/subtitlecatalog.png?raw=true)
 
 ### Next/Previous Dialogies
 
@@ -31,33 +31,33 @@ These are all of the keyboard shortcuts:
 - Up Arrow: Increase Volume
 - Down Arrow: Decrease Volume
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/nextdialogue.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/nextdialogue.png?raw=true)
 
 ### Video Speed
 
 You can change the video speed and pitch preservement to slow down the video if the characters are speaking 
 too fast.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/videospeed.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/videospeed.png?raw=true)
 
 ### A-B Looping
 
 You can set a loop from point A to point B to continuosly loop over a specific section.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/abloop.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/abloop.png?raw=true)
 
 ### Video Filters
 
 Apply video filters such as brightness, contrast, hue, saturation, sharpen, and pixelate. \
 *Note that this feature is only for fun.
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/videofilters.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/videofilters.png?raw=true)
 
 ### Official Website
 
 Support the studio/publisher by buying the anime/manga from their website (a link is provided). 
 
-![Image](https://github.com/Tenpi/CuteManga.moe/blob/main/assets/images/officialwebsite.png?raw=true)
+![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/officialwebsite.png?raw=true)
 
 ### Tech Stack
 
