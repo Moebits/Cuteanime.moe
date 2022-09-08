@@ -7,9 +7,11 @@ import bookmark from "../assets/icons/bookmark.png"
 import unbookmark from "../assets/icons/unbookmark.png"
 import support from "../assets/icons/support.png"
 import database from "../json/database"
+import download from "../assets/icons/download.png"
 import "./styles/videooptions.less"
 
 interface Props {
+    num: string
     info: {
         title: string
         id: string
@@ -44,6 +46,8 @@ const VideoOptions: React.FunctionComponent<Props> = (props) => {
     const [saved, setSaved] = useState(false)
     const history = useHistory()
 
+    const num = props.num.includes("OVA") ? props.num : Number(props.num)
+
     const save = () => {
         let bookmarkStr = localStorage.getItem("bookmarks")
         if (!bookmarkStr) bookmarkStr = "{}"
@@ -65,6 +69,13 @@ const VideoOptions: React.FunctionComponent<Props> = (props) => {
         setSaved(bookmarks[props.info.id] === true)
     }, [props.info.id])
 
+    const downloadSubs = () => {
+        const episode = props.info.episodes.find((e) => e.episodeNumber === num)
+        if (episode) {
+            functions.download(`${props.info.title} ${num}.vtt`, episode.japaneseSubs)
+        }
+    }
+
     return (
         <div className="video-options">
             <div className="video-options-container">
@@ -76,6 +87,12 @@ const VideoOptions: React.FunctionComponent<Props> = (props) => {
                 </button>
             </div>
             <div className="video-options-container">
+                <button className="video-options-button" onClick={downloadSubs}>
+                    <span className="video-options-button-hover">
+                        <img className="video-options-button-img" src={download}/>
+                        <span className="video-options-button-text">{"Download Subs"}</span>
+                    </span>
+                </button>
                 <button className="video-options-button" onClick={save}>
                     <span className="video-options-button-hover">
                         <img className="video-options-button-img" src={saved ? unbookmark : bookmark}/>

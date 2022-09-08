@@ -167,7 +167,6 @@ const EpisodeCarousel: React.FunctionComponent<Props> = (props) => {
 
     useEffect(() => {
         if (typeof window === "undefined") return
-        sliderRef.current.addEventListener("wheel", handleWheel, {passive: false})
         const observer = new IntersectionObserver(handleIntersection, {root: null, rootMargin: "0px", threshold: 1})
         const resizeObserver = new ResizeObserver(handleResize)
         const element = episodesRef[episodesRef.length - 1]?.current
@@ -176,30 +175,10 @@ const EpisodeCarousel: React.FunctionComponent<Props> = (props) => {
             resizeObserver.observe(element)
         }
         return () => {
-            sliderRef.current.removeEventListener("wheel", handleWheel, {passive: false})
             observer.disconnect()
             resizeObserver.disconnect()
         }
     })
-
-    const handleWheel = (event: React.WheelEvent) => {
-        if (props.info.episodes.length <= 1) return
-        event.preventDefault()
-        if (!sliderRef.current) return
-        let marginLeft = parseInt(sliderRef.current.style.marginLeft)
-        if (Number.isNaN(marginLeft)) marginLeft = 0
-        // @ts-ignore
-        const trackPad = event.wheelDeltaY ? event.wheelDeltaY === -3 * event.deltaY : event.deltaMode === 0
-        if (event.deltaX < 0) {
-            marginLeft += 25
-        } else {
-            marginLeft -= 25
-        }
-        if (marginLeft > 0) marginLeft = 0
-        if (lastPos) if (marginLeft < lastPos) marginLeft = lastPos
-        console.log(marginLeft)
-        sliderRef.current.style.marginLeft = `${marginLeft}px`
-    }
 
     const arrowRightClick = () => {
         if (!showRightArrow) return

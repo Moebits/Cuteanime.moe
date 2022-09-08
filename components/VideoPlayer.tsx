@@ -152,6 +152,9 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleIndexJA(0)
         setSubtitleIndexEN(0)
         if (videoRef.current) videoRef.current.style.opacity = "1"
+        setTimeout(() => {
+            forceUpdate()
+        }, 300)
     }, [num])
 
     useEffect(() => {

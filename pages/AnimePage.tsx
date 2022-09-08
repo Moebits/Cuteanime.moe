@@ -48,7 +48,7 @@ const AnimePage: React.FunctionComponent<Props> = (props) => {
                     <div className="anime-page-video-container">
                         <VideoPlayer info={info} num={num}/>
                         <EpisodeCarousel info={info} num={num}/>
-                        <VideoOptions info={info}/>
+                        <VideoOptions info={info} num={num}/>
                     </div>
                     <div className="anime-page-subtitle-container">
                         <EpisodeSubtitles ep={`${info.id} ${num}`}/>

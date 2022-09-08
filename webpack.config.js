@@ -3,7 +3,6 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const TerserJSPlugin = require("terser-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const CopyWebpackPlugin = require("copy-webpack-plugin")
 const nodeExternals = require("webpack-node-externals")
 const webpack = require("webpack")
 const path = require("path")
@@ -43,10 +42,7 @@ module.exports = [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "./index.html"),
         minify: false
-      }),
-      new CopyWebpackPlugin([
-          {from: path.join(path.dirname(require.resolve("pdfjs-dist/package.json")), "cmaps"), to: "cmaps/"}
-      ])
+      })
     ]
   }, 
   {

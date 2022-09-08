@@ -195,7 +195,7 @@ const AboutPage: React.FunctionComponent = (props) => {
                     <div className="about-row">
                         <span className="about-text">
                             If you need to contact us for any reason send us an email at 
-                            <span className="about-link" onClick={() => window.open("mailto:cuteanime.moe@gmail.com")}> cuteanime.moe@gmail.com</span>.  <br/><br/>
+                            <span className="about-link" onClick={() => window.open("mailto:cutemanga.moe@gmail.com")}> cutemanga.moe@gmail.com</span>.  <br/><br/>
 
                             I hope that you enjoy watching anime and studying Japanese!
                         </span>
