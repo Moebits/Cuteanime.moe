@@ -153,8 +153,9 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleIndexEN(0)
         if (videoRef.current) videoRef.current.style.opacity = "1"
         setTimeout(() => {
-            forceUpdate()
-        }, 300)
+            console.log("here?")
+            setProgress(0)
+        }, 4000)
     }, [num])
 
     useEffect(() => {
@@ -218,6 +219,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     useEffect(() => {
         const timeUpdate = () => {
             if (!videoRef.current) return
+            const secondsProgress = videoRef.current.currentTime / videoRef.current.playbackRate
+            const duration = videoRef.current.duration / videoRef.current.playbackRate
             if (abloop) {
                 const current = videoRef.current.currentTime
                 const start = reverse ? (videoRef.current.duration / 100) * (100 - loopStart) : (videoRef.current.duration / 100) * loopStart
@@ -232,6 +235,11 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                         setSeekTo(start)
                     }
                 }
+            }
+            if (!dragging) {
+                setSecondsProgress(secondsProgress)
+                setProgress((secondsProgress / duration) * 100)
+                setDuration(duration)
             }
         }
         /*
