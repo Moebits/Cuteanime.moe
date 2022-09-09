@@ -20,7 +20,7 @@ search through all of the dialogues.
 
 ![Image](https://github.com/Tenpi/CuteAnime.moe/blob/main/assets/images/subtitlecatalog.png?raw=true)
 
-### Next/Previous Dialogies
+### Next/Previous Dialogues
 
 You can quickly go to the next/previous dialogues with the arrow buttons. It also works with left/right arrow keys. 
 These are all of the keyboard shortcuts:
