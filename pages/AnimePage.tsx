@@ -1,6 +1,6 @@
 import React, {useEffect, useContext, useReducer, useState} from "react"
 import {Switch, Route, Redirect, useHistory, useLocation} from "react-router-dom"
-import {EnableDragContext} from "../Context"
+import {EnableDragContext, MobileContext} from "../Context"
 import TitleBar from "../components/TitleBar"
 import SideBar from "../components/SideBar"
 import Sortbar from "../components/Sortbar"
@@ -23,6 +23,7 @@ interface Props {
 const AnimePage: React.FunctionComponent<Props> = (props) => {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
     const {enableDrag, setEnableDrag} = useContext(EnableDragContext)
+    const {mobile, setMobile} = useContext(MobileContext)
     const history = useHistory()
 
     const id = props.match.params.id
@@ -50,10 +51,11 @@ const AnimePage: React.FunctionComponent<Props> = (props) => {
                         <EpisodeCarousel info={info} num={num}/>
                         <VideoOptions info={info} num={num}/>
                     </div>
+                    {!mobile ? 
                     <div className="anime-page-subtitle-container">
                         <EpisodeSubtitles ep={`${info.id} ${num}`}/>
                         <EpisodeInfo info={info} num={num}/>
-                    </div>
+                    </div> : null}
                 </div>
                 <Footer/>
             </div>
