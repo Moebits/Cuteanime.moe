@@ -153,9 +153,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleIndexEN(0)
         if (videoRef.current) videoRef.current.style.opacity = "1"
         setTimeout(() => {
-            console.log("here?")
-            setProgress(0)
-        }, 4000)
+            forceUpdate()
+        }, 1000)
     }, [num])
 
     useEffect(() => {
@@ -818,10 +817,16 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         }
     }
 
+    const getSubMinHeight = () => {
+        if (showEnglishSubs && showJapaneseSubs) return "95px"
+        if (showEnglishSubs || showJapaneseSubs) return "52px"
+        return "0px"
+    }
+
     return (
         <div className="video-player" onMouseEnter={() => setEnableDrag(false)} ref={fullscreenRef}>
             <div className="video-player-video-container">
-                <div className="video-subtitles">
+                <div className="video-subtitles" style={{minHeight: getSubMinHeight()}}>
                     {showJapaneseSubs ? 
                     <div className="video-subtitles-row" onMouseEnter={() => setEnableDrag(false)}>
                         <span className="video-subtitles-text">{subtitleTextJA}</span>

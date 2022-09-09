@@ -92,7 +92,7 @@ const EpisodeInfo: React.FunctionComponent<Props> = (props) => {
                 <span className="episode-info-category">Japanese:</span>
                 <span className="episode-info-content">{episode.japaneseTitle}</span>
             </div>
-            <div className="episode-info-row" style={{display: "inline-block"}}>
+            <div className="episode-info-row">
                 <span className="episode-info-category">Synopsis:</span>
                 <span className="episode-info-content">{episode.synopsis} <span className="episode-info-text-content-link" onClick={() => window.open(props.info.episodeSource, "_blank")}>[{functions.websiteName(props.info.episodeSource)}]</span></span>
             </div>

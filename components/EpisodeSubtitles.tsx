@@ -73,20 +73,21 @@ const EpisodeSubtitles: React.FunctionComponent<Props> = (props) => {
     }
 
     const subtitleJSX = useMemo(() => {
+        console.log("here")
         return generateJSX()
     }, [sortedCues, showSubtitleTranslation, siteColorChange])
 
     useEffect(() => {
         const element = document.querySelectorAll(".episode-subtitles-cue").item(subtitleIndexJA) as HTMLDivElement
         if (lastElement) {
-            lastElement.style.border = "1px solid var(--text)"
+            lastElement.style.borderColor = "var(--text)"
             lastElement.querySelectorAll(".episode-subtitles-cue-text").forEach((e: any) => {
                 e.style.color = "var(--text)"
             });
             (lastElement.querySelector(".episode-subtitles-cue-marker") as HTMLImageElement).style.filter = getFilter() || ""
         }
         if (element) {
-            element.style.border = "1px solid var(--activeSubtitles)"
+            element.style.borderColor = "var(--activeSubtitles)"
             element.querySelectorAll(".episode-subtitles-cue-text").forEach((e: any) => {
                 e.style.color = "var(--activeSubtitles)"
             });
@@ -99,7 +100,6 @@ const EpisodeSubtitles: React.FunctionComponent<Props> = (props) => {
                 const highBound = container.scrollHeight - middle
                 const elementPos = element.offsetTop
                 if (elementPos > lowBound && elementPos < highBound) {
-                    //container.scrollTop = 
                     container.scrollTo({top: elementPos - middle, behavior: "smooth"})
                 }
                 if (elementPos >= highBound) {

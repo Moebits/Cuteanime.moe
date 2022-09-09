@@ -46,6 +46,7 @@ export default class Functions {
     }
 
     public static cleanSubs = (str: string) => {
+        if (str.length > 10000) return ""
         return Functions.cleanHTML(str).replace(/(\{)(.*)(\})/g, "")
         .replace("\\N", " ").replace("\\n", " ")
     }
@@ -777,5 +778,26 @@ export default class Functions {
 
     public static between = (num: number, min: number, max: number) => {
         return (num >= min && num <= max)
+    }
+
+    public static encodeS3URI(filename: string) {
+        return "https://" + filename.split("https://")[1]
+            .replaceAll("+", "%2B")
+            .replaceAll(" ", "+")
+            .replaceAll(":", "%3A")
+            .replaceAll("\"", "%22")
+            .replaceAll("'", "%27")
+            .replaceAll("!", "%21")
+            .replaceAll("?", "%3F")
+            .replaceAll("#", "%23")
+            .replaceAll("$", "%24")
+            .replaceAll("&", "%26")
+            .replaceAll("(", "%28")
+            .replaceAll(")", "%29")
+            .replaceAll("*", "%2A")
+            .replaceAll(",", "%2C")
+            .replaceAll(";", "%3B")
+            .replaceAll("=", "%3D")
+            .replaceAll("@", "%40")
     }
 }

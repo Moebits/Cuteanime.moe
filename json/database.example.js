@@ -1,9 +1,10 @@
 import episodeList from "./episodes.example"
+import functions from "../structures/Functions"
 
 export const genres = [""]
 
 const getCover = (id, title) => {
-    return `https://example.moe/${id}/${title.replaceAll(" ", "+")}.jpg`
+    return functions.encodeS3URI(`https://example.moe/${id}/cover/${title}.jpg`)
 }
 
 const getEpisodes = (id, title, episodeCount, ovaCount = 0, videoType = "mp4") => {
@@ -17,10 +18,10 @@ const getEpisodes = (id, title, episodeCount, ovaCount = 0, videoType = "mp4") =
             title: episodeData.title,
             japaneseTitle: episodeData.japaneseTitle,
             synopsis: episodeData.synopsis,
-            thumbnail: `https://example.moe/${id}/thumbnails/${title.replaceAll(" ", "+")}+${episode}.jpg`,
-            video: `https://example.moe/${id}/videos/${title.replaceAll(" ", "+")}+${episode}.${videoType}`,
-            japaneseSubs: `https://example.moe/${id}/japanese/${title.replaceAll(" ", "+")}+${episode}.vtt`,
-            englishSubs: `https://example.moe/${id}/english/${title.replaceAll(" ", "+")}+${episode}.vtt`
+            thumbnail: functions.encodeS3URI(`https://example.moe/${id}/thumbnails/${title} ${episode}.jpg`),
+            video: functions.encodeS3URI(`https://example.moe/${id}/videos/${title} ${episode}.${videoType}`),
+            japaneseSubs: functions.encodeS3URI(`https://example.moe/${id}/japanese/${title} ${episode}.vtt`),
+            englishSubs: functions.encodeS3URI(`https://example.moe/${id}/english/${title} ${episode}.vtt`)
         })
     }
     return episodes
