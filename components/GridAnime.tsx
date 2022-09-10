@@ -42,7 +42,7 @@ const GridAnime: React.FunctionComponent<Props> = (props) => {
     }
 
     const getFontSize = () => {
-        let size = 10
+        let size = 20
         if (props.title.length <= 5) {
             size = 45
         } else if (props.title.length <= 10) {
@@ -54,7 +54,7 @@ const GridAnime: React.FunctionComponent<Props> = (props) => {
         } else if (props.title.length <= 30) {
             size = 20
         } else {
-            size = 10
+            size = 20
         }
         if (mobile) size -= 7
         return `${size}px`

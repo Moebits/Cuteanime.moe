@@ -144,7 +144,6 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setDragProgress(0)
         setDuration(0)
         setDragging(false)
-        setSeekTo(null)
         setJapaneseCues(null)
         setEnglishCues(null)
         setSubtitleTextJA("")
@@ -153,7 +152,10 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleIndexEN(0)
         if (videoRef.current) videoRef.current.style.opacity = "1"
         setTimeout(() => {
-            forceUpdate()
+            setPaused(true)
+            setTimeout(() => {
+                setPaused(false)
+            }, 10)
         }, 1000)
     }, [num])
 
@@ -330,7 +332,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
             let seekValue = seekTo !== null ? seekTo * speed : null 
             seekValue = dragging ? dragProgress * speed : seekValue
             if (seekValue !== null) if (Number.isNaN(seekValue) || !Number.isFinite(seekValue)) seekValue = 0
-            if (seekValue) videoRef.current.currentTime = seekValue
+            if (seekValue !== null) videoRef.current.currentTime = seekValue
             setDuration(videoRef.current.duration / speed)
             let frame = videoRef.current as any
 
@@ -644,10 +646,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setABLoop(false)
         setLoopStart(0)
         setLoopEnd(100)
+        setSeekTo(0)
         resetFilters()
-        setTimeout(() => {
-            setSeekTo(0)
-        }, 300)
     }
 
     const resetFilters = () => {
