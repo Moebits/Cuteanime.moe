@@ -14,7 +14,7 @@ const AnimeGrid: React.FunctionComponent = (props) => {
     const {enableDrag, setEnableDrag} = useContext(EnableDragContext)
     const {search, setSearch} = useContext(SearchContext)
     const {searchFlag, setSearchFlag} = useContext(SearchFlagContext)
-    const {genre, setGenre} = useContext(SearchContext)
+    const {genre, setGenre} = useContext(GenreContext)
     const {sort, setSort} = useContext(SortContext)
     const {reverse, setReverse} = useContext(ReverseContext)
     const {mobile, setMobile} = useContext(MobileContext)
