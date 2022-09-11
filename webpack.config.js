@@ -16,7 +16,7 @@ module.exports = [
     entry: "./index",
     mode: "production",
     node: {__dirname: false, fs: "empty"},
-    output: {filename: "script.js", chunkFilename: "script.js", path: path.resolve(__dirname, "./dist")},
+    output: {filename: "script.[hash:8].js", chunkFilename: "script.[hash:8].js", path: path.resolve(__dirname, "./dist")},
     resolve: {extensions: [".js", ".jsx", ".ts", ".tsx"], alias: {"react-dom$": "react-dom/profiling", "scheduler/tracing": "scheduler/tracing-profiling"}},
     performance: {hints: false},
     optimization: {minimize: true, minimizer: [new TerserJSPlugin({extractComments: false}), new OptimizeCSSAssetsPlugin()], namedModules: true},
@@ -36,8 +36,8 @@ module.exports = [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.HashedModuleIdsPlugin(),
       new MiniCssExtractPlugin({
-        filename: "styles.css",
-        chunkFilename: "styles.css"
+        filename: "styles.[hash:8].css",
+        chunkFilename: "styles.[hash:8].css"
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "./index.html"),
@@ -71,8 +71,8 @@ module.exports = [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.HashedModuleIdsPlugin(),
       new MiniCssExtractPlugin({
-        filename: "styles.css",
-        chunkFilename: "styles.css"
+        filename: "styles.[hash:8].css",
+        chunkFilename: "styles.[hash:8].css"
       })
     ]
   }
