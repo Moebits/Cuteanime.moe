@@ -72,7 +72,7 @@ const GridEpisode = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                     <img className="grid-episode-img" style={{height: props.mini ? "100px" : "140px"}} src={props.img} ref={imageRef} onMouseMove={(event) => imageAnimation(event)} onMouseLeave={() => cancelImageAnimation()}/>
                 </div>
                 <div className={`grid-episode-text-container ${!hover ? "hide-grid-episode-text" : ""}`}>
-                    <span className="grid-episode-text" style={{fontSize: props.mini ? "20px" : "27px"}}>Episode {props.num}</span>
+                    <span className="grid-episode-text" style={{fontSize: props.mini ? "20px" : "27px"}}>{String(props.num).includes("OVA") ? "" : "Episode "}{props.num}</span>
                     {props.active ? <span className="grid-episode-text" style={{fontSize: props.mini ? "17px" : "25px", color: "var(--activeSubtitles)", marginLeft: "10px"}}>(current)</span> : null}
                 </div>
                 <div className={`grid-episode-title-container ${!hover ? "hide-grid-episode-title" : ""}`}>
