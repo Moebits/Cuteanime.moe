@@ -48,6 +48,7 @@ export default class Functions {
     public static cleanSubs = (str: string) => {
         if (str.length > 10000) return ""
         return Functions.cleanHTML(str).replace(/(\{)(.*)(\})/g, "")
+        .replace(/(&)(.*?)(;)/g, "")
         .replace("\\N", " ").replace("\\n", " ")
     }
     
