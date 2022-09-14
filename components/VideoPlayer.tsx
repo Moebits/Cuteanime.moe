@@ -155,7 +155,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
             setPaused(true)
             setTimeout(() => {
                 setPaused(false)
-            }, 100)
+            }, 500)
         }, 1000)
     }, [num])
 

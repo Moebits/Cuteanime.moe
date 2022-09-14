@@ -21,7 +21,6 @@ const AnimeInfoPage: React.FunctionComponent<Props> = (props) => {
     const history = useHistory()
 
     const id = props.match.params.id
-    console.log(id)
     const info = database.find((m) => m.id === id)
     if (!info) {
         history.push(`/404`)

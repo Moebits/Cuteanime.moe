@@ -73,7 +73,6 @@ const EpisodeSubtitles: React.FunctionComponent<Props> = (props) => {
     }
 
     const subtitleJSX = useMemo(() => {
-        console.log("here")
         return generateJSX()
     }, [sortedCues, showSubtitleTranslation, siteColorChange])
 

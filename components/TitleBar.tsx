@@ -16,7 +16,6 @@ const colorList = {
     "--text": "#3a2bf6",
     "--text-alt": "#2b2ef6",
     "--text-dark": "#241feb",
-    "--subtitles": "#6b63ff",
     "--activeSubtitles": "#ff2fee",
     "--background": "#0d0039",
     "--titlebarBG": "#150066",
