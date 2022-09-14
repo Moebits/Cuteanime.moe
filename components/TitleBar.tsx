@@ -30,7 +30,10 @@ const colorList = {
     "--sortbarSearchBG": "#180098",
     "--gridButton": "#2e30ff",
     "--footerBG": "#100033",
-    "--dropdownBG": "rgba(8, 0, 51, 0.95)"
+    "--dropdownBG": "rgba(8, 0, 51, 0.95)",
+    "--videoSlider": "#302dee",
+    "--videoSliderActive": "#3d46ff",
+    "--videoABSlider": "#3b1ee2"
 }
 
 interface Props {

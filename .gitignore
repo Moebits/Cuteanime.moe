@@ -3,3 +3,4 @@ dist
 node_modules
 json/database.js
 json/episodes.js
+assets/icons/saved

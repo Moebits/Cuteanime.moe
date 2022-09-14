@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState, useRef, useReducer} from "react"
+import React, {useContext, useEffect, useState, useRef, useReducer, useMemo} from "react"
 import {useHistory} from "react-router-dom"
 import {EnableDragContext, MobileContext, SpeedContext, BrightnessContext, ContrastContext, HueContext, SaturationContext, LightnessContext, JumpFlagContext,
-BlurContext, SharpenContext, PixelateContext, SubtitleIndexENContext, SubtitleIndexJAContext, JapaneseCuesContext, EnglishCuesContext} from "../Context"
+BlurContext, SharpenContext, PixelateContext, SubtitleIndexENContext, SubtitleIndexJAContext, JapaneseCuesContext, EnglishCuesContext, SiteColorChangeContext} from "../Context"
 import database from "../json/database"
 import Slider from "react-slider"
 import videoReverseIcon from "../assets/icons/video-reverse.png"
@@ -69,6 +69,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0)
     const {enableDrag, setEnableDrag} = useContext(EnableDragContext)
     const {mobile, setMobile} = useContext(MobileContext)
+    const {siteColorChange, setSiteColorChange} = useContext(SiteColorChangeContext)
     const {brightness, setBrightness} = useContext(BrightnessContext)
     const {contrast, setContrast} = useContext(ContrastContext)
     const {hue, setHue} = useContext(HueContext)
@@ -617,11 +618,6 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         //if (videoControls.current) videoControls.current.style.opacity = "0"
     }
 
-    const getPreversePitchIcon = () => {
-        if (preservePitch) return videoPreservePitchIcon
-        return videoPreservePitchOnIcon
-    }
-
     const getVideoPlayIcon = () => {
         if (paused) return videoPlayIcon
         return videoPauseIcon
@@ -763,7 +759,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const getFilter = (active?: boolean) => {
         if (typeof window === "undefined") return
         const bodyStyles = window.getComputedStyle(document.body)
-        const color = bodyStyles.getPropertyValue("--text")
+        const color = active ? bodyStyles.getPropertyValue("--videoSliderActive") : bodyStyles.getPropertyValue("--videoSlider")
         return functions.calculateFilter(color)
     }
 
@@ -823,6 +819,20 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         return "0px"
     }
 
+    useEffect(() => {
+        if (typeof document === "undefined") return
+        const element = document.querySelector(".video-slider-thumb") as HTMLElement
+        if (element) element.style.filter = getFilter() || ""
+    }, [siteColorChange])
+
+    const filter = useMemo(() => {
+        return getFilter()
+    }, [siteColorChange])
+
+    const filterActive = useMemo(() => {
+        return getFilter(true)
+    }, [siteColorChange])
+
     return (
         <div className="video-player" onMouseEnter={() => setEnableDrag(false)} ref={fullscreenRef}>
             <div className="video-player-video-container">
@@ -857,27 +867,27 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 </div>
                 <div className="video-control-row" onMouseEnter={() => setEnableDrag(false)} onMouseLeave={() => setEnableDrag(true)}>
                     <div className="video-control-row-container">
-                        <img className="video-control-img" ref={videoFilterRef} src={videoFXIcon} onClick={() => setShowFilterDropdown((prev) => !prev)}/>
-                        <img className="video-control-img" ref={videoSpeedRef} src={videoSpeedIcon} onClick={() => setShowSpeedDropdown((prev) => !prev)}/>
-                        <img className="video-control-img" onClick={() => changePreservesPitch()} src={getPreversePitchIcon()}/>
-                        <img className="video-control-img" src={videoClearIcon} onClick={reset}/>
+                        <img className="video-control-img" ref={videoFilterRef} src={videoFXIcon} onClick={() => setShowFilterDropdown((prev) => !prev)} style={{filter}}/>
+                        <img className="video-control-img" ref={videoSpeedRef} src={videoSpeedIcon} onClick={() => setShowSpeedDropdown((prev) => !prev)} style={{filter}}/>
+                        <img className="video-control-img" onClick={() => changePreservesPitch()} src={videoPreservePitchIcon} style={{filter: preservePitch ? filterActive : filter}}/>
+                        <img className="video-control-img" src={videoClearIcon} onClick={reset} style={{filter}}/>
                     </div> 
                     <div className="video-ontrol-row-container">
-                        <img className="video-control-img" src={videoRewindIcon} onClick={() => prevSub()}/>
-                        <img className="video-control-img" onClick={() => setPaused((prev) => !prev)} src={getVideoPlayIcon()}/>
-                        <img className="video-control-img" src={videoFastforwardIcon} onClick={() => nextSub()}/>
+                        <img className="video-control-img" src={videoRewindIcon} onClick={() => prevSub()} style={{filter}}/>
+                        <img className="video-control-img" onClick={() => setPaused((prev) => !prev)} src={getVideoPlayIcon()} style={{filter}}/>
+                        <img className="video-control-img" src={videoFastforwardIcon} onClick={() => nextSub()} style={{filter}}/>
                     </div> 
                     <div className="video-control-row-container">
-                        <img className="video-control-img" src={videoABLoopIcon} onClick={() => toggleAB()}/>
+                        <img className="video-control-img" src={videoABLoopIcon} onClick={() => toggleAB()} style={{filter: abloop ? filterActive : filter}}/>
                     </div>
                     <div className="video-control-row-container" onMouseEnter={() => setShowSubtitleDropdown(true)} onMouseLeave={() => setShowSubtitleDropdown(false)}>
-                        <img className="video-control-img" ref={videoSubtitleRef} src={videoSubIcon}/>
+                        <img className="video-control-img" ref={videoSubtitleRef} src={videoSubIcon} style={{filter}}/>
                     </div> 
                     <div className="video-control-row-container">
-                        <img className="video-control-img" src={videoFullscreenIcon} onClick={() => fullscreen()}/>
+                        <img className="video-control-img" src={videoFullscreenIcon} onClick={() => fullscreen()} style={{filter}}/>
                     </div> 
                     <div className="video-control-row-container" onMouseEnter={() => setShowVolumeSlider(true)} onMouseLeave={() => setShowVolumeSlider(false)}>
-                        <img className="video-control-img" ref={videoVolumeRef} src={getVideoVolumeIcon()} onClick={mute}/>
+                        <img className="video-control-img" ref={videoVolumeRef} src={getVideoVolumeIcon()} onClick={mute} style={{filter}}/>
                     </div> 
                 </div>
                 <div className={`video-speed-dropdown ${showSpeedDropdown ? "" : "hide-speed-dropdown"}`} style={{marginRight: getVideoSpeedMarginRight(), marginTop: "-240px"}}
@@ -916,11 +926,11 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 onMouseEnter={() => {setShowSubtitleDropdown(true); setEnableDrag(false)}} onMouseLeave={() => {setShowSubtitleDropdown(false); setEnableDrag(true)}}>
                     <div className="video-subtitle-dropdown-container">
                         <div className="video-subtitle-dropdown-row" onClick={() => setShowJapaneseSubs((prev) => !prev)}>
-                            <img className="video-subtitle-dropdown-checkbox" src={showJapaneseSubs ? checkboxChecked : checkbox} style={{filter: getFilter()}}/>
+                            <img className="video-subtitle-dropdown-checkbox" src={showJapaneseSubs ? checkboxChecked : checkbox} style={{filter}}/>
                             <span className="video-subtitle-dropdown-text">Japanese</span>
                         </div>
                         <div className="video-subtitle-dropdown-row" onClick={() => setShowEnglishSubs((prev) => !prev)}>
-                            <img className="video-subtitle-dropdown-checkbox" src={showEnglishSubs ? checkboxChecked : checkbox} style={{filter: getFilter()}}/>
+                            <img className="video-subtitle-dropdown-checkbox" src={showEnglishSubs ? checkboxChecked : checkbox} style={{filter}}/>
                             <span className="video-subtitle-dropdown-text">English</span>
                         </div>
                     </div>
