@@ -31,6 +31,8 @@ export default class DatabaseFunctions {
                 if (bookmarks[m.id] === true) return true 
                 return false
             })
+        } else if (sort === "difficulty") {
+            anime = anime.sort((a, b) => a.difficulty < b.difficulty ? 1 : -1)
         } else {
             anime = anime.sort((a, b) => Date.parse(a.added) < Date.parse(b.added) ? 1 : -1)
         }

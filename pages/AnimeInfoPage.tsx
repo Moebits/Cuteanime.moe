@@ -7,6 +7,7 @@ import Sortbar from "../components/Sortbar"
 import Footer from "../components/Footer"
 import AnimeInfo from "../components/AnimeInfo"
 import EpisodeGrid from "../components/EpisodeGrid"
+import RelatedAnime from "../components/RelatedAnime"
 import DonationDialog from "../dialogs/DonationDialog"
 import functions from "../structures/Functions"
 import database from "../json/database"
@@ -40,6 +41,7 @@ const AnimeInfoPage: React.FunctionComponent<Props> = (props) => {
             <div className="content" onMouseEnter={() => setEnableDrag(true)}>
                 <AnimeInfo info={info}/>
                 <EpisodeGrid info={info}/>
+                <RelatedAnime info={info}/>
                 <Footer/>
             </div>
         </div>

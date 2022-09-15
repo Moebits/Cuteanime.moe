@@ -12,7 +12,8 @@ interface Props {
     img: string 
     title: string
     id: string
-    refresh: () => void
+    noButtons?: boolean
+    refresh?: () => void
 }
 
 const GridAnime: React.FunctionComponent<Props> = (props) => {
@@ -99,7 +100,7 @@ const GridAnime: React.FunctionComponent<Props> = (props) => {
             setSaved(true)
         }
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
-        props.refresh()
+        props.refresh?.()
     }
 
     useEffect(() => {
@@ -118,7 +119,7 @@ const GridAnime: React.FunctionComponent<Props> = (props) => {
                         <span className="grid-anime-text" style={{fontSize: getFontSize()}}>{props.title}</span>
                     </div>
                 </div>
-                {!mobile ? <div className="grid-anime-button-container">
+                {!mobile && !props.noButtons ? <div className="grid-anime-button-container">
                     <button className="grid-anime-button" onClick={() => history.push(`/anime/${props.id}`)} onAuxClick={onClick}>
                         <span className="grid-anime-button-hover">
                             <img className="grid-anime-button-img" src={watch}/>

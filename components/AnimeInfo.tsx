@@ -14,6 +14,7 @@ interface Props {
         aired: string
         added: string
         genres: string[]
+        difficulty: number
         synopsis: string
         synopsisSource: string
         episodeSource: string
@@ -63,6 +64,10 @@ const AnimeInfo: React.FunctionComponent<Props> = (props) => {
                     <div className="anime-info-text-row">
                         <span className="anime-info-text-category">Genres:</span>
                         <span className="anime-info-text-content">{props.info.genres.join(", ")}</span>
+                    </div>
+                    <div className="anime-info-text-row">
+                        <span className="anime-info-text-category">Difficulty:</span>
+                        <span className="anime-info-text-content">{props.info.difficulty}</span>
                     </div>
                     <div className="anime-info-text-row">
                         <span className="anime-info-text-category">Synopsis:</span>

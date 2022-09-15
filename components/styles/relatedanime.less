@@ -1,0 +1,77 @@
+@import "../../index.less";
+
+.related-anime {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+}
+
+.related-anime-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+    margin: 0px 20px;
+}
+
+.related-anime-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: var(--gridButton);
+}
+
+.related-anime-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.related-anime-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-anime-img {
+    height: 300px;
+    width: auto;
+    &:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+    }
+}
+
+.related-anime-title-container {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    background-color: var(--sortbarSearchBG);
+    justify-content: center;
+    transform-origin: bottom;
+    width: 100%;
+    transition: all 0.3s;
+    padding-top: 5px;
+}
+
+.related-anime-title {
+    font-family: Mangaka, sans-serif;
+    font-size: 30px;
+    color: var(--gridButton);
+}
+
+.hide-related-anime-title {
+    transform-origin: bottom;
+    transform: scaleY(0);
+}
+
+@media screen and (max-width: 500px) {
+    .related-anime-container {
+        margin: 0px;
+        margin-left: 50px;
+    }
+}

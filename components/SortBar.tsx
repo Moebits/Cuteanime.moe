@@ -6,6 +6,7 @@ import functions from "../structures/Functions"
 import date from "../assets/icons/date.png"
 import alphabetic from "../assets/icons/alphabetic.png"
 import bookmark from "../assets/icons/bookmark.png"
+import difficulty from "../assets/icons/difficulty.png"
 import sortIcon from "../assets/icons/sort.png"
 import sortReverseIcon from "../assets/icons/sortReverse.png"
 import searchIcon from "../assets/icons/search.png"
@@ -76,6 +77,12 @@ const SortBar: React.FunctionComponent<Props> = (props) => {
                     <span className="sortbar-button-hover" style={{filter: sort === "bookmarks" ? getFilter() : ""}}>
                         <img className="sortbar-button-img" src={bookmark}/>
                         <span className="sortbar-button-text">Bookmarks</span>
+                    </span>
+                </button> : null}
+                {!mobile ? <button className="sortbar-button" onClick={() => setSort("difficulty")}>
+                    <span className="sortbar-button-hover" style={{filter: sort === "difficulty" ? getFilter() : ""}}>
+                        <img className="sortbar-button-img" src={difficulty}/>
+                        <span className="sortbar-button-text">Difficulty</span>
                     </span>
                 </button> : null}
                 <button className="sortbar-button" onClick={() => setReverse((prev: boolean) => !prev)}>
