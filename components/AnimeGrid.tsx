@@ -37,8 +37,8 @@ const AnimeGrid: React.FunctionComponent = (props) => {
 
     const generateJSX = () => {
         let jsx = [] as any
-        let step = mobile ? 3 : 4
-        for (let i = 0; i < animeList.length; i+=4) {
+        let step = mobile ? 2 : 4
+        for (let i = 0; i < animeList.length; i+=step) {
             let gridImages = [] as any
             for (let j = 0; j < step; j++) {
                 const k = i+j

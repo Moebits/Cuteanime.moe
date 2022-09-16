@@ -94,8 +94,8 @@ const SortBar: React.FunctionComponent<Props> = (props) => {
             {props.anime && props.num && props.title && props.id ? 
             <div className="sortbar-episode-container">
                 <span className="sortbar-anime-title" onClick={() => history.push(`/anime/${props.id}`)}>{props.anime}</span>
-                <span className="sortbar-episode-num">{props.num.includes("OVA") ? props.num : `Episode ${props.num}`} -</span>
-                <span className="sortbar-episode-title">{props.title}</span>
+                <span className="sortbar-episode-num">{props.num.includes("OVA") ? props.num : `Episode ${props.num}`}{!mobile ? " -" : ""}</span>
+                {!mobile ? <span className="sortbar-episode-title">{props.title}</span> : null}
             </div> : null}
             <div className="sortbar-search-container" onMouseEnter={() => setEnableDrag(false)}>
                 <input className="sortbar-search" type="search" placeholder="Anime name..." spellCheck="false" value={search} onChange={(event) => setSearch(event.target.value)}/>

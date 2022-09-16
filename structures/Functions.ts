@@ -783,6 +783,7 @@ export default class Functions {
 
     public static encodeS3URI(filename: string) {
         return "https://" + filename.split("https://")[1]
+            .replaceAll("%", "%25")
             .replaceAll("+", "%2B")
             .replaceAll(" ", "+")
             .replaceAll(":", "%3A")

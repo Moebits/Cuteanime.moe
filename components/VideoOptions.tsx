@@ -87,6 +87,7 @@ const VideoOptions: React.FunctionComponent<Props> = (props) => {
                 </button>
             </div>
             <div className="video-options-container">
+                {!mobile ? <>
                 <button className="video-options-button" onClick={downloadSubs}>
                     <span className="video-options-button-hover">
                         <img className="video-options-button-img" src={download}/>
@@ -98,7 +99,7 @@ const VideoOptions: React.FunctionComponent<Props> = (props) => {
                         <img className="video-options-button-img" src={saved ? unbookmark : bookmark}/>
                         <span className="video-options-button-text">{saved ? "Unbookmark" : "Bookmark"}</span>
                     </span>
-                </button>
+                </button></> : null}
                 <button className="video-options-button" onClick={() => window.open(props.info.website, "_blank")}>
                     <span className="video-options-button-hover">
                         <img className="video-options-button-img" src={support}/>

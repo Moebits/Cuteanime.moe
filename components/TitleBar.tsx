@@ -121,14 +121,15 @@ const TitleBar: React.FunctionComponent<Props> = (props) => {
                 </span>
             </div>
             <div className="titlebar-container">
-                {!mobile ? <div className="titlebar-nav-container">
-                    <span className="titlebar-nav-text" onClick={() => history.push("/anime")}>Anime</span>
-                    <span className="titlebar-nav-text" onClick={() => window.open("https://cutemanga.moe", "_blank")}>Manga</span>
+                <div className="titlebar-nav-container">
+                    {!mobile ? <span className="titlebar-nav-text" onClick={() => history.push("/anime")}>Anime</span> : null}
+                    {!mobile ? <span className="titlebar-nav-text" onClick={() => window.open("https://cutemanga.moe", "_blank")}>Manga</span> : null}
                     <span className="titlebar-nav-text" onClick={() => history.push("/about")}>About</span>
-                </div> : null}
+                </div>
+                {!mobile ?
                 <div className="titlebar-nav-container">
                     <img className="titlebar-nav-icon" src={color} style={{filter: getFilter()}} onClick={() => setActiveDropdown((prev) => !prev)}/>
-                </div>
+                </div> : null}
             </div>
             <div className={`dropdown ${activeDropdown ? "" : "hide-dropdown"}`}>
                 <div className="dropdown-row">

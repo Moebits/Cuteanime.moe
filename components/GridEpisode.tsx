@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState, useRef} from "react"
 import {useHistory} from "react-router-dom"
 import {HashLink as Link} from "react-router-hash-link"
-import {EnableDragContext} from "../Context"
+import {EnableDragContext, MobileContext} from "../Context"
 import functions from "../structures/Functions"
 import "./styles/gridepisode.less"
 
@@ -16,6 +16,7 @@ interface Props {
 
 const GridEpisode = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     const {enableDrag, setEnableDrag} = useContext(EnableDragContext)
+    const {mobile, setMobile} = useContext(MobileContext)
     const [drag, setDrag] = useState(false)
     const [hover, setHover] = useState(false)
     const imageRef = useRef<HTMLImageElement>(null)
@@ -65,18 +66,42 @@ const GridEpisode = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         }
     }
 
+    const getHeight = () => {
+        if (mobile) {
+            return props.mini ? "79px" : "90px"
+        } else {
+            return props.mini ? "100px" : "140px"
+        }
+    }
+
+    const getEpisodeFontSize = () => {
+        if (mobile) {
+            return props.mini ? "17px" : "24px"
+        } else {
+            return props.mini ? "20px" : "27px"
+        }
+    }
+
+    const getTitleFontSize = () => {
+        if (mobile) {
+            return props.mini ? "13px" : "15px"
+        } else {
+            return props.mini ? "15px" : "18px"
+        }
+    }
+
     return (
         <div className={props.mini ? "grid-episode-mini" : "grid-episode"} data-active={props.active ? "true" : null}>
             <div className="grid-episode-container">
                 <div ref={ref} className="grid-episode-img-container" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={onClick} onAuxClick={onClick} onMouseDown={mouseDown} onMouseUp={mouseUp} onMouseMove={mouseMove}>
-                    <img className="grid-episode-img" style={{height: props.mini ? "100px" : "140px"}} src={props.img} ref={imageRef} onMouseMove={(event) => imageAnimation(event)} onMouseLeave={() => cancelImageAnimation()}/>
+                    <img className="grid-episode-img" style={{height: getHeight()}} src={props.img} ref={imageRef} onMouseMove={(event) => imageAnimation(event)} onMouseLeave={() => cancelImageAnimation()}/>
                 </div>
                 <div className={`grid-episode-text-container ${!hover ? "hide-grid-episode-text" : ""}`}>
-                    <span className="grid-episode-text" style={{fontSize: props.mini ? "20px" : "27px"}}>{String(props.num).includes("OVA") ? "" : "Episode "}{props.num}</span>
+                    <span className="grid-episode-text" style={{fontSize: getEpisodeFontSize()}}>{String(props.num).includes("OVA") ? "" : "Episode "}{props.num}</span>
                     {props.active ? <span className="grid-episode-text" style={{fontSize: props.mini ? "17px" : "25px", color: "var(--activeSubtitles)", marginLeft: "10px"}}>(current)</span> : null}
                 </div>
                 <div className={`grid-episode-title-container ${!hover ? "hide-grid-episode-title" : ""}`}>
-                    <span className="grid-episode-title" style={{fontSize: props.mini ? "15px" : "18px"}}>{props.title}</span>
+                    <span className="grid-episode-title" style={{fontSize: getTitleFontSize()}}>{props.title}</span>
                 </div>
             </div>
         </div>
