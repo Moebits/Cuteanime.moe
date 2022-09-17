@@ -11,6 +11,21 @@ export default class DatabaseFunctions {
         return genres
     }
 
+    public static logGenres = () => {
+        let genreList = [] as any 
+        for (let i = 0; i < database.length; i++) {
+            genreList.push(...database[i].genres)
+        }
+        genreList = functions.removeDuplicates(genreList)
+        let str = "["
+        for (let i = 0; i < genreList.length; i++) {
+            str += `"${genreList[i]}"`
+            if (i < genreList.length - 1) str += ", "
+        }
+        str += "]"
+        console.log(str)
+    }
+
     public static getSorted = (query: string, genre: string, sort: string, reverse: boolean) => {
         let anime = database.slice()
         if (query) anime = anime.filter((m) => {

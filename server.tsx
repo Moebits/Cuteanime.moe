@@ -12,6 +12,7 @@ import React from "react"
 import App from "./App"
 import {renderToString} from "react-dom/server"
 import {StaticRouter as Router} from "react-router-dom"
+import dbFunctions from "./structures/DatabaseFunctions"
 const __dirname = path.resolve()
 
 dotenv.config()
@@ -46,6 +47,7 @@ app.get("/*", function(req, res) {
 
 const run = async () => {
   app.listen(process.env.PORT || 8080, () => console.log("Started the website server!"))
+  dbFunctions.logGenres()
 }
 
 run()

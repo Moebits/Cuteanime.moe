@@ -860,8 +860,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 <div className="video-control-row" onMouseEnter={() => setEnableDrag(false)} onMouseLeave={() => setEnableDrag(true)}>
                     <p className="video-control-text">{dragging ? functions.formatSeconds(dragProgress) : functions.formatSeconds(secondsProgress)}</p>
                     <div className="video-control-slider-container">
-                        <Slider ref={videoSliderRef} className="video-slider" trackClassName="video-slider-track" thumbClassName="video-slider-thumb" min={0} max={100} value={progress} onBeforeChange={() => setDragging(true)} onChange={(value) => updateProgressText(value)} onAfterChange={(value) => seek(reverse ? 100 - value : value)}/>
-                        <Slider ref={abSlider} className="video-ab-slider" trackClassName="video-ab-slider-track" thumbClassName="video-ab-slider-thumb" min={0} max={100} step={0.1} value={[loopStart, loopEnd]} onBeforeChange={() => setDragging(true)} onChange={(value) => updateProgressTextAB(value)} onAfterChange={(value) => changeABLoop(value)}/>
+                        <Slider ref={videoSliderRef} className="video-slider" trackClassName="video-slider-track" thumbClassName="video-slider-thumb" min={0} max={100} step={0.01} value={progress} onBeforeChange={() => setDragging(true)} onChange={(value) => updateProgressText(value)} onAfterChange={(value) => seek(reverse ? 100 - value : value)}/>
+                        <Slider ref={abSlider} className="video-ab-slider" trackClassName="video-ab-slider-track" thumbClassName="video-ab-slider-thumb" min={0} max={100} step={0.01} value={[loopStart, loopEnd]} onBeforeChange={() => setDragging(true)} onChange={(value) => updateProgressTextAB(value)} onAfterChange={(value) => changeABLoop(value)}/>
                     </div>
                     <p className="video-control-text">{functions.formatSeconds(duration)}</p>
                 </div>

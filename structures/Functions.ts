@@ -41,8 +41,14 @@ export default class Functions {
         })
     }
 
+    public static stripHtml(html: string) {
+        let tmp = document.createElement("div")
+        tmp.innerHTML = html
+        return tmp.textContent || tmp.innerText || ""
+    }
+
     public static cleanHTML = (str: string) => {
-        return Functions.decodeEntities(str).replace(/<\/?[^>]+(>|$)/g, "")
+        return Functions.stripHtml(Functions.decodeEntities(str)) //.replace(/<\/?[^>]+(>|$)/g, "")
     }
 
     public static cleanSubs = (str: string) => {

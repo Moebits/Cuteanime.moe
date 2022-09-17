@@ -86,9 +86,12 @@ const AboutPage: React.FunctionComponent = (props) => {
                     <div className="about-row">
                         <span className="about-text">
                             Every show has a difficulty rating taken from <span className="about-link" onClick={() => window.open("https://jpdb.io/anime-difficulty-list", "_blank")}>jpdb.io</span> which measures the 
-                            approximate difficulty of the show from 1-10. Shows scored from 1-3 are well suited for beginners (these are usually slice of life anime or shows aimed at a younger audience). Shows rated from 4-6 are 
-                            better for intermediate learners (most anime will probably fall into this range). And finally, anime rated from 7-10 are... not for the faint of heart and watching anime at this 
-                            level is only recommended to advanced learners (expect there to be lots of unique words and obscure kanji). 
+                            approximate difficulty of the show from 1-10. Shows scored from 1-3 are good for beginners (these are usually slice of life anime or shows aimed at a younger audience). Shows rated from 4-6 are 
+                            better for intermediate learners (most anime will probably fall into this range). And finally, anime rated from 7-10 are extremely difficult and watching anime at this 
+                            level is only recommended to advanced learners (expect there to be lengthy dialogue with lots of unique words and obscure kanji). <br/><br/>
+
+                            Do note that at the bare minimum you should know Hiragana, Katakana, some basic grammar, and some vocabulary, so almost no anime is going to be easy for complete beginners. If you are a 
+                            complete beginner you should study the above first and come back later.
                         </span>
                     </div>
                     <div className="about-row">
