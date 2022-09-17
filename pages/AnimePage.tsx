@@ -35,7 +35,7 @@ const AnimePage: React.FunctionComponent<Props> = (props) => {
     }
 
     useEffect(() => {
-        document.title = `${functions.toProperCase(id.replaceAll("-", " "))}`
+        document.title = `${functions.toProperCase(id.replaceAll("-", " "))} ${num}`
     }, [])
 
     return (
