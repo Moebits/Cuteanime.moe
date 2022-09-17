@@ -137,6 +137,34 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const englishSubs = episode.englishSubs
 
     useEffect(() => {
+        const savedSpeed = localStorage.getItem("speed")
+        const savedPitch = localStorage.getItem("preservePitch")
+        const savedVolume = localStorage.getItem("volume")
+        const savedJASubs = localStorage.getItem("showJapaneseSubs")
+        const savedENSubs = localStorage.getItem("showEnglishSubs")
+        const savedProgress = localStorage.getItem("secondsProgress")
+        if (savedSpeed) setSpeed(JSON.parse(savedSpeed))
+        if (savedPitch) setPreservePitch(JSON.parse(savedPitch))
+        if (savedVolume) setVolume(JSON.parse(savedVolume))
+        if (savedJASubs) setShowJapaneseSubs(JSON.parse(savedJASubs))
+        if (savedENSubs) setShowEnglishSubs(JSON.parse(savedENSubs))
+        if (savedProgress) {
+            setTimeout(() => {
+                setSeekTo(JSON.parse(savedProgress))
+            }, 1000)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("speed", JSON.stringify(speed))
+        localStorage.setItem("preservePitch", JSON.stringify(preservePitch))
+        localStorage.setItem("volume", JSON.stringify(volume))
+        localStorage.setItem("showJapaneseSubs", JSON.stringify(showJapaneseSubs))
+        localStorage.setItem("showEnglishSubs", JSON.stringify(showEnglishSubs))
+        localStorage.setItem("secondsProgress", JSON.stringify(secondsProgress))
+    }, [speed, preservePitch, volume, showJapaneseSubs, showEnglishSubs, secondsProgress])
+
+    useEffect(() => {
         reset()
         setVideoLoaded(false)
         setReverse(false)

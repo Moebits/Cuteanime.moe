@@ -95,6 +95,16 @@ const AboutPage: React.FunctionComponent = (props) => {
                         </span>
                     </div>
                     <div className="about-row">
+                        <span className="about-title">Subtitle Resync</span>
+                    </div>
+                    <div className="about-row">
+                        <span className="about-text">
+                            I make an effort to time the subtitles to the videos correctly since most of the subtitles on kitsu are out of sync (because they include commercial breaks). However, 
+                            I do not check every single episode so if you find any videos with subtitles that are out of sync for more than 1-2 seconds you can contact me and I will attempt to retime 
+                            that episode.
+                        </span>
+                    </div>
+                    <div className="about-row">
                         <span className="about-title">Switching Subtitles</span>
                     </div>
                     <div className="about-row">
