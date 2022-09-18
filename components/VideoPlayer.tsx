@@ -144,14 +144,14 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         const savedENSubs = localStorage.getItem("showEnglishSubs")
         const savedProgress = localStorage.getItem("secondsProgress")
         if (savedSpeed) setSpeed(JSON.parse(savedSpeed))
-        if (savedPitch) setPreservePitch(JSON.parse(savedPitch))
-        if (savedVolume) setVolume(JSON.parse(savedVolume))
+        if (savedPitch) changePreservesPitch(JSON.parse(savedPitch))
+        if (savedVolume) changeVolume(JSON.parse(savedVolume))
         if (savedJASubs) setShowJapaneseSubs(JSON.parse(savedJASubs))
         if (savedENSubs) setShowEnglishSubs(JSON.parse(savedENSubs))
         if (savedProgress) {
             setTimeout(() => {
                 setSeekTo(JSON.parse(savedProgress))
-            }, 1000)
+            }, 500)
         }
     }, [])
 
@@ -161,8 +161,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         localStorage.setItem("volume", JSON.stringify(volume))
         localStorage.setItem("showJapaneseSubs", JSON.stringify(showJapaneseSubs))
         localStorage.setItem("showEnglishSubs", JSON.stringify(showEnglishSubs))
-        localStorage.setItem("secondsProgress", JSON.stringify(secondsProgress))
-    }, [speed, preservePitch, volume, showJapaneseSubs, showEnglishSubs, secondsProgress])
+    }, [speed, preservePitch, volume, showJapaneseSubs, showEnglishSubs])
 
     useEffect(() => {
         reset()
@@ -185,7 +184,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
             setTimeout(() => {
                 setPaused(false)
             }, 500)
-        }, 1000)
+        }, 500)
     }, [num])
 
     useEffect(() => {
@@ -270,6 +269,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 setSecondsProgress(secondsProgress)
                 setProgress((secondsProgress / duration) * 100)
                 setDuration(duration)
+                localStorage.setItem("secondsProgress", JSON.stringify(secondsProgress))
             }
         }
         /*
@@ -879,8 +879,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                     <canvas className="video-sharpen-overlay" ref={videoOverlayRef}></canvas>
                     <canvas className="video-canvas" ref={videoCanvasRef}></canvas>
                     <video crossOrigin="anonymous" autoPlay disablePictureInPicture playsInline className="video" ref={videoRef} src={video} onLoadedData={(event) => onLoad(event)}>
-                        <track kind="subtitles" src={japaneseSubs} srcLang="ja"/>
-                        <track kind="subtitles" src={englishSubs} srcLang="en"/>
+                        <track kind="subtitles" src={japaneseSubs} srcLang="ja" style={{opacity: 0}}/>
+                        <track kind="subtitles" src={englishSubs} srcLang="en" style={{opacity: 0}}/>
                     </video>
                 </div>
             </div>
