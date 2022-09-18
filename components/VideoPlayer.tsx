@@ -897,7 +897,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                     <div className="video-control-row-container">
                         <img className="video-control-img" ref={videoFilterRef} src={videoFXIcon} onClick={() => setShowFilterDropdown((prev) => !prev)} style={{filter}}/>
                         <img className="video-control-img" ref={videoSpeedRef} src={videoSpeedIcon} onClick={() => setShowSpeedDropdown((prev) => !prev)} style={{filter}}/>
-                        <img className="video-control-img" onClick={() => changePreservesPitch()} src={videoPreservePitchIcon} style={{filter: preservePitch ? filterActive : filter}}/>
+                        <img className="video-control-img" onClick={() => changePreservesPitch()} src={videoPreservePitchIcon} style={{filter: preservePitch ? filter : filterActive}}/>
                         <img className="video-control-img" src={videoClearIcon} onClick={reset} style={{filter}}/>
                     </div> 
                     <div className="video-ontrol-row-container">
