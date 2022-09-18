@@ -874,7 +874,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                         <span className="video-subtitles-text">{subtitleTextEN}</span>
                     </div> : null}
                 </div>
-                <div className="video-filters" ref={videoFiltersRef}>
+                <div className="video-filters" ref={videoFiltersRef} onClick={() => setPaused((prev) => !prev)}>
                     <img className="video-lightness-overlay" ref={videoLightnessRef} src={backFrame}/>
                     <canvas className="video-sharpen-overlay" ref={videoOverlayRef}></canvas>
                     <canvas className="video-canvas" ref={videoCanvasRef}></canvas>
