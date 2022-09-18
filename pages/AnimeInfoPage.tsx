@@ -30,6 +30,7 @@ const AnimeInfoPage: React.FunctionComponent<Props> = (props) => {
 
     useEffect(() => {
         document.title = `${functions.toProperCase(id.replaceAll("-", " "))}`
+        localStorage.removeItem("secondsProgress")
     }, [])
 
     return (
