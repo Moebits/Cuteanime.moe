@@ -59,7 +59,7 @@ const SideBar: React.FunctionComponent= (props) => {
         if (sidebarSort === "recent") {
             const recent = dbFunctions.getRecent()
             let max = recent.length < 22 ? recent.length : 22
-            for (let i = 0; i < max; i++) {
+            for (let i = 0; i < recent.length; i++) {
                 jsx.push(<span className="sidebar-link" onClick={() => history.push(`/anime/${recent[i].id}`)}>{recent[i].title}</span>)
             }
         } else if (sidebarSort === "genre") {
@@ -71,6 +71,9 @@ const SideBar: React.FunctionComponent= (props) => {
                 }
                 jsx.push(<span className="sidebar-link" onClick={click}>{genres[i]}</span>)
             }
+        }
+        if (sidebarSort === "recent") {
+            return <div className="sidebar-scroll-container">{jsx}</div>
         }
         return jsx
     }
