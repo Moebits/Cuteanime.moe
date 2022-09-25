@@ -179,12 +179,6 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleIndexJA(0)
         setSubtitleIndexEN(0)
         if (videoRef.current) videoRef.current.style.opacity = "1"
-        setTimeout(() => {
-            setPaused(true)
-            setTimeout(() => {
-                setPaused(false)
-            }, 500)
-        }, 500)
     }, [num])
 
     useEffect(() => {
@@ -370,8 +364,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 frame = videoRef.current
                 let secondsProgress = videoRef.current.currentTime / speed
                 if (reverse) secondsProgress = (videoRef.current.duration / speed) - secondsProgress
-                setSecondsProgress(secondsProgress)
-                setProgress((secondsProgress / duration) * 100)
+                //setSecondsProgress(secondsProgress)
+                //setProgress((secondsProgress / duration) * 100)
             }
 
             const draw = () => {
@@ -526,8 +520,6 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
 
     const seek = (position: number) => {
         let secondsProgress = (position / 100) * duration
-        let progress = (duration / 100) * position
-        setProgress(progress)
         setDragging(false)
         setSeekTo(secondsProgress)
         forceUpdate()
@@ -729,12 +721,13 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
             const japaneseTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[0]
             const englishTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[1]
             if (!japaneseTrack || !englishTrack) return
-            japaneseTrack.mode = "showing"
-            englishTrack.mode = "showing"
+            japaneseTrack.mode = "hidden"
+            englishTrack.mode = "hidden"
             const pollCues = async () => {
                 await functions.timeout(500)
                 const japaneseTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[0]
                 const englishTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[1]
+                console.log(englishTrack)
                 if (!japaneseTrack?.cues?.length || !englishTrack?.cues?.length) {
                     return pollCues()
                 } else {
