@@ -34,7 +34,7 @@ const Footer: React.FunctionComponent = (props) => {
                         <img className="footer-link-img" src={tos} style={{filter: getFilter()}}/>
                         {!mobile ? <span className="footer-link-text">TOS/Privacy Policy</span> : null}
                     </div>
-                    <div className="footer-link-box" onClick={() => window.open("mailto:cuteanime.moe@gmail.com")}>
+                    <div className="footer-link-box" onClick={() => window.open("mailto:cutemanga.moe@gmail.com")}>
                         <img className="footer-link-img" src={contact}  style={{filter: getFilter()}}/>
                         {!mobile ? <span className="footer-link-text">Contact</span> : null}
                     </div>
@@ -47,7 +47,7 @@ const Footer: React.FunctionComponent = (props) => {
                         {!mobile ? <span className="footer-link-text">Donate</span> : null}
                     </div>
                 </div>
-                <span className="footer-link-text-small">©{new Date().getFullYear()} Moepi</span>
+                <span className="footer-link-text-small">©{new Date().getFullYear()} CuteAnime</span>
             </div>
             <div className="footer-row">
                 <span className="footer-text">

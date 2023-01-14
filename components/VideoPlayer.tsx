@@ -122,7 +122,10 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const [abloop, setABLoop] = useState(false)
     const [loopStart, setLoopStart] = useState(0)
     const [loopEnd, setLoopEnd] = useState(100)
+    const [controlsVisible, setControlsVisible] = useState(false)
+    const [subtitleHover, setSubtitleHover] = useState(false)
     const abSlider = useRef(null) as any
+    const subtitleRef = useRef(null) as any
     const history = useHistory()
 
     const num = props.num.includes("OVA") ? props.num : Number(props.num)
@@ -178,6 +181,8 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setSubtitleTextEN("")
         setSubtitleIndexJA(0)
         setSubtitleIndexEN(0)
+        setControlsVisible(false)
+        setSubtitleHover(false)
         if (videoRef.current) videoRef.current.style.opacity = "1"
     }, [num])
 
@@ -202,12 +207,15 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const resizeVideoCanvas = () => {
         if (!videoCanvasRef.current || !videoRef.current || !videoOverlayRef.current || !videoLightnessRef.current) return
         if (videoRef.current.clientWidth === 0) return
-        videoCanvasRef.current.width = videoRef.current.clientWidth
-        videoCanvasRef.current.height = videoRef.current.clientHeight
-        videoOverlayRef.current.width = videoRef.current.clientWidth
-        videoOverlayRef.current.height = videoRef.current.clientHeight
-        videoLightnessRef.current.width = videoRef.current.clientWidth
-        videoLightnessRef.current.height = videoRef.current.clientHeight
+        const ratio = videoRef.current.videoWidth / videoRef.current.videoHeight
+        const width = videoRef.current.clientWidth
+        const height = videoRef.current.clientWidth / ratio
+        videoCanvasRef.current.width = width
+        videoCanvasRef.current.height = height
+        videoOverlayRef.current.width = width
+        videoOverlayRef.current.height = height
+        videoLightnessRef.current.width = width
+        videoLightnessRef.current.height = height
     }
 
     const exitFullScreen = async () => {
@@ -346,10 +354,13 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
             videoCanvas.style.opacity = "1"
             videoRef.current.style.opacity = "1"
             const landscape = videoRef.current.videoWidth >= videoRef.current.videoHeight
-            videoCanvas.width = videoRef.current.clientWidth
-            videoCanvas.height = videoRef.current.clientHeight
-            sharpenOverlay.width = videoRef.current.clientWidth
-            sharpenOverlay.height = videoRef.current.clientHeight
+            const ratio = videoRef.current.videoWidth / videoRef.current.videoHeight
+            const width = videoRef.current.clientWidth
+            const height = videoRef.current.clientWidth / ratio
+            videoCanvas.width = width
+            videoCanvas.height = height
+            sharpenOverlay.width = width
+            sharpenOverlay.height = height
             const ctx = videoCanvas.getContext("2d") as any
             const sharpenCtx = sharpenOverlay.getContext("2d") as any
             let seekValue = seekTo !== null ? seekTo * speed : null 
@@ -629,14 +640,25 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     }
 
     const controlMouseEnter = () => {
-        //if (videoControls.current) videoControls.current.style.opacity = "1"
+        setControlsVisible(true)
     }
 
     const controlMouseLeave = () => {
         setShowSpeedDropdown(false)
         setShowVolumeSlider(false)
-        //if (videoControls.current) videoControls.current.style.opacity = "0"
+        setControlsVisible(false)
     }
+
+    useEffect(() => {
+        if (controlsVisible) {
+            if (videoControls.current) videoControls.current.style.opacity = "1"
+            subtitleRef.current.style.bottom = "60px"
+        } else {
+            if (subtitleHover) return
+            if (videoControls.current) videoControls.current.style.opacity = "0"
+            subtitleRef.current.style.bottom = "0px"
+        }
+    }, [controlsVisible, subtitleHover])
 
     const getVideoPlayIcon = () => {
         if (paused) return videoPlayIcon
@@ -692,6 +714,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 videoRef.current.style.maxHeight = "none"
                 videoCanvasRef.current!.style.marginTop = "0px"
                 videoCanvasRef.current!.style.marginBottom = "0px"
+                videoFiltersRef.current!.style.marginBottom = "0px"
             }
             setTimeout(() => {
                 resizeVideoCanvas()
@@ -709,6 +732,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 videoRef.current.style.maxHeight = "100vh"
                 videoCanvasRef.current!.style.marginTop = "auto"
                 videoCanvasRef.current!.style.marginBottom = "auto"
+                videoFiltersRef.current!.style.marginBottom = "40px"
             }
             setTimeout(() => {
                 resizeVideoCanvas()
@@ -857,7 +881,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     return (
         <div className="video-player" onMouseEnter={() => setEnableDrag(false)} ref={fullscreenRef}>
             <div className="video-player-video-container">
-                <div className="video-subtitles" style={{minHeight: getSubMinHeight()}}>
+                <div className="video-subtitles" style={{minHeight: getSubMinHeight()}} ref={subtitleRef} onMouseEnter={() => setSubtitleHover(true)} onMouseLeave={() => setSubtitleHover(false)}>
                     {showJapaneseSubs ? 
                     <div className="video-subtitles-row" onMouseEnter={() => setEnableDrag(false)}>
                         <span className="video-subtitles-text">{subtitleTextJA}</span>
@@ -901,7 +925,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                     <div className="video-control-row-container">
                         <img className="video-control-img" src={videoABLoopIcon} onClick={() => toggleAB()} style={{filter: abloop ? filterActive : filter}}/>
                     </div>
-                    <div className="video-control-row-container" onMouseEnter={() => setShowSubtitleDropdown(true)} onMouseLeave={() => setShowSubtitleDropdown(false)}>
+                    <div className="video-control-row-container" onClick={() => setShowSubtitleDropdown((prev) => !prev)} onMouseLeave={() => setShowSubtitleDropdown(false)}>
                         <img className="video-control-img" ref={videoSubtitleRef} src={videoSubIcon} style={{filter}}/>
                     </div> 
                     <div className="video-control-row-container">

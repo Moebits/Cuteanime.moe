@@ -11,6 +11,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
     width: 100%;
 }
 
@@ -43,6 +44,8 @@
     position: relative;
     display: flex;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -93,7 +96,7 @@
     width: 100%;
     border-radius: 0.2;
     align-items: center;
-    margin-left: 10px;
+    //margin-left: 10px;
     margin-right: 10px;
 }
 
@@ -131,7 +134,7 @@
 
 .video-controls {
     z-index: 1200;
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -484,9 +487,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
     pointer-events: all;
+    transition: bottom 0.5s;
 }
 
 .video-subtitles-row {
@@ -511,7 +515,7 @@
     align-items: center;
     margin-top: 20px;
     margin-bottom: 5px;
-    margin-left: 10px;
+    //margin-left: 10px;
     margin-right: 10px;
     width: 100%;
 }
