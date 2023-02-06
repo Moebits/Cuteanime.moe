@@ -1,5 +1,8 @@
 # Cuteanime.moe
 
+**Update - 2/5/2023**
+To save on hosting costs I have taken down the online version of website. For the time being only the locally run version is supported.
+
 Cuteanime is a website where you can watch anime with Japanese subtitles and lookup words with a dictionary extension like Yomichan. We get most of 
 the Japanese subtitles from [Kitsunekko](https://kitsunekko.net).
 
@@ -81,6 +84,8 @@ Start the web server with `npm start`.
 
 All the web server does is load the `index.html` file, there is no real backend so this can be hosted as a static 
 website. 
+
+To load files from your local hard drive edit the pathname for the route `/Anime/*` in `server.tsx`.
 
 ### Manga Site
 - [Cutemanga.moe](https://github.com/Tenpi/Cutemanga.moe)

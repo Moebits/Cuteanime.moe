@@ -808,4 +808,9 @@ export default class Functions {
             .replaceAll("=", "%3D")
             .replaceAll("@", "%40")
     }
+
+    public static isLocalHost = () => {
+        if (typeof window === "undefined") return false
+        return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    }
 }
