@@ -44,7 +44,6 @@ app.get("/Anime/*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   try {
     let pathname = `/Volumes/Files/${decodeURIComponent(req.path.slice(1)).replaceAll(":", "%3A")}`
-    console.log(pathname)
     const body = fs.readFileSync(pathname)
     const contentLength = body.length
     if (req.headers.range) {

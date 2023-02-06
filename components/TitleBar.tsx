@@ -123,7 +123,7 @@ const TitleBar: React.FunctionComponent<Props> = (props) => {
             <div className="titlebar-container">
                 <div className="titlebar-nav-container">
                     {!mobile ? <span className="titlebar-nav-text" onClick={() => history.push("/anime")}>Anime</span> : null}
-                    {!mobile ? <span className="titlebar-nav-text" onClick={() => window.open(functions.isLocalHost() ? "https://localhost:8080" : "https://cutemanga.moe", "_blank")}>Manga</span> : null}
+                    {!mobile ? <span className="titlebar-nav-text" onClick={() => window.open(functions.isLocalHost() ? "http://localhost:8080" : "https://cutemanga.moe", "_blank")}>Manga</span> : null}
                     <span className="titlebar-nav-text" onClick={() => history.push("/about")}>About</span>
                 </div>
                 {!mobile ?
