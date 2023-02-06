@@ -34,6 +34,7 @@ export const LightnessContext = React.createContext<any>(null)
 export const BlurContext = React.createContext<any>(null)
 export const SharpenContext = React.createContext<any>(null)
 export const PixelateContext = React.createContext<any>(null)
+export const InvertContext = React.createContext<any>(null)
 
 export const SpeedContext = React.createContext<any>(null)
 
@@ -46,6 +47,7 @@ const Context: React.FunctionComponent = (props) => {
     const [blur, setBlur] = useState(0)
     const [sharpen, setSharpen] = useState(0)
     const [pixelate, setPixelate] = useState(1)
+    const [invert, setInvert] = useState(false)
     const [page, setPage] = useState("1")
     const [zoom, setZoom] = useState("100%")
     const [numPagesFlag, setNumPagesFlag] = useState(1)
@@ -72,6 +74,7 @@ const Context: React.FunctionComponent = (props) => {
     const [speed, setSpeed] = useState(1)
     return (
         <>  
+            <InvertContext.Provider value={{invert, setInvert}}>
             <SiteColorChangeContext.Provider value={{siteColorChange, setSiteColorChange}}>
             <JumpFlagContext.Provider value={{jumpFlag, setJumpFlag}}>
             <SubtitleIndexENContext.Provider value={{subtitleIndexEN, setSubtitleIndexEN}}>
@@ -137,6 +140,7 @@ const Context: React.FunctionComponent = (props) => {
             </SubtitleIndexENContext.Provider>
             </JumpFlagContext.Provider>
             </SiteColorChangeContext.Provider>
+            </InvertContext.Provider>
         </>
     )
 }

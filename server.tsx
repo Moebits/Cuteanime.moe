@@ -14,6 +14,7 @@ import App from "./App"
 import {renderToString} from "react-dom/server"
 import {StaticRouter as Router} from "react-router-dom"
 import dbFunctions from "./structures/DatabaseFunctions"
+import serverFunctions from "./structures/ServerFunctions"
 const __dirname = path.resolve()
 
 dotenv.config()

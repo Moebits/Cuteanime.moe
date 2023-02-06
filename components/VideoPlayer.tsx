@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState, useRef, useReducer, useMemo} from "react"
 import {useHistory} from "react-router-dom"
-import {EnableDragContext, MobileContext, SpeedContext, BrightnessContext, ContrastContext, HueContext, SaturationContext, LightnessContext, JumpFlagContext,
+import {EnableDragContext, MobileContext, SpeedContext, BrightnessContext, ContrastContext, HueContext, SaturationContext, LightnessContext, JumpFlagContext, InvertContext,
 BlurContext, SharpenContext, PixelateContext, SubtitleIndexENContext, SubtitleIndexJAContext, JapaneseCuesContext, EnglishCuesContext, SiteColorChangeContext} from "../Context"
 import database from "../json/database"
 import Slider from "react-slider"
@@ -76,6 +76,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
     const {saturation, setSaturation} = useContext(SaturationContext)
     const {lightness, setLightness} = useContext(LightnessContext)
     const {pixelate, setPixelate} = useContext(PixelateContext)
+    const {invert, setInvert} = useContext(InvertContext)
     const {blur, setBlur} = useContext(BlurContext)
     const {sharpen, setSharpen} = useContext(SharpenContext)
     const [showSpeedDropdown, setShowSpeedDropdown] = useState(false)
@@ -697,6 +698,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
         setBlur(0)
         setSharpen(0)
         setPixelate(1)
+        setInvert(false)
     }
 
     const fullscreen = async (exit?: boolean) => {
@@ -880,7 +882,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
 
     return (
         <div className="video-player" onMouseEnter={() => setEnableDrag(false)} ref={fullscreenRef}>
-            <div className="video-player-video-container">
+            <div className="video-player-video-container" style={{filter: invert ? "invert(1)" : ""}}>
                 <div className="video-subtitles" style={{minHeight: getSubMinHeight()}} ref={subtitleRef} onMouseEnter={() => setSubtitleHover(true)} onMouseLeave={() => setSubtitleHover(false)}>
                     {showJapaneseSubs ? 
                     <div className="video-subtitles-row" onMouseEnter={() => setEnableDrag(false)}>
@@ -925,7 +927,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                     <div className="video-control-row-container">
                         <img className="video-control-img" src={videoABLoopIcon} onClick={() => toggleAB()} style={{filter: abloop ? filterActive : filter}}/>
                     </div>
-                    <div className="video-control-row-container" onClick={() => setShowSubtitleDropdown((prev) => !prev)} onMouseLeave={() => setShowSubtitleDropdown(false)}>
+                    <div className="video-control-row-container" onClick={() => setShowSubtitleDropdown((prev) => !prev)}>
                         <img className="video-control-img" ref={videoSubtitleRef} src={videoSubIcon} style={{filter}}/>
                     </div> 
                     <div className="video-control-row-container">
@@ -968,7 +970,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                     </div>
                 </div>
                 <div className={`video-subtitle-dropdown ${showSubtitleDropdown ? "" : "hide-subtitle-dropdown"}`} style={{marginRight: getVideoSubtitleMarginRight(), marginTop: "-75px"}}
-                onMouseEnter={() => {setShowSubtitleDropdown(true); setEnableDrag(false)}} onMouseLeave={() => {setShowSubtitleDropdown(false); setEnableDrag(true)}}>
+                onMouseEnter={() => {setEnableDrag(false)}} onMouseLeave={() => {setShowSubtitleDropdown(false); setEnableDrag(true)}}>
                     <div className="video-subtitle-dropdown-container">
                         <div className="video-subtitle-dropdown-row" onClick={() => setShowJapaneseSubs((prev) => !prev)}>
                             <img className="video-subtitle-dropdown-checkbox" src={showJapaneseSubs ? checkboxChecked : checkbox} style={{filter}}/>
@@ -1029,6 +1031,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                             <Slider className="video-filter-slider" trackClassName="video-filter-slider-track" thumbClassName="video-filter-slider-thumb" onChange={(value) => setPixelate(value)} min={1} max={10} step={0.1} value={pixelate}/>
                         </div>
                         <div className="video-filter-dropdown-row">
+                            <button className="video-filter-dropdown-button" onClick={() => setInvert((prev: boolean) => !prev)} style={{marginRight: "30px"}}>Invert</button>
                             <button className="video-filter-dropdown-button" onClick={() => resetFilters()}>Reset</button>
                         </div>
                     </div>
