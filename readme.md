@@ -87,5 +87,7 @@ website.
 
 To load files from your local hard drive edit the pathname for the route `/Anime/*` in `server.tsx`.
 
+If you need more detailed instructions, check https://github.com/Tenpi/Cuteanime.moe/issues/1#issuecomment-1570601613.
+
 ### Manga Site
 - [Cutemanga.moe](https://github.com/Tenpi/Cutemanga.moe)
