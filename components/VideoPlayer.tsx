@@ -753,7 +753,7 @@ const VideoPlayer: React.FunctionComponent<Props> = (props) => {
                 await functions.timeout(500)
                 const japaneseTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[0]
                 const englishTrack = (document.querySelector(".video") as HTMLVideoElement).textTracks[1]
-                console.log(englishTrack)
+                console.log(japaneseTrack)
                 if (!japaneseTrack?.cues?.length || !englishTrack?.cues?.length) {
                     return pollCues()
                 } else {
