@@ -87,7 +87,7 @@
     "express-session": "^1.17.2",
     "gibberish-detector": "^1.0.0",
     "gif-encoder": "^0.7.2",
-    "gif-frames": "github:tenpi/gif-frames#no-cumulative",
+    "gif-frames": "github:moebits/gif-frames#no-cumulative",
     "handlebars": "^4.7.7",
     "image-pixels": "^2.2.2",
     "magic-bytes.js": "^1.0.12",
